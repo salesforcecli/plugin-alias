@@ -1,0 +1,4 @@
+{
+  "description": "unsets aliases for the Salesforce CLI",
+  "NoAliasKeysFound": "Please provide alias name(s) to unset."
+}

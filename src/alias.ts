@@ -1,8 +1,8 @@
 /*
- * Copyright (c) 2018, salesforce.com, inc.
+ * Copyright (c) 2020, salesforce.com, inc.
  * All rights reserved.
- * SPDX-License-Identifier: BSD-3-Clause
- * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ * Licensed under the BSD 3-Clause license.
+ * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
 import { SfdxCommand } from '@salesforce/command';
@@ -20,7 +20,7 @@ export interface AliasResult {
 export enum Command {
   List = 'List',
   Set = 'Set',
-  Unset = 'Unset'
+  Unset = 'Unset',
 }
 
 interface TableColumns {
@@ -38,19 +38,19 @@ export abstract class AliasCommand extends SfdxCommand {
   protected static tableColumns: TableColumns = {
     [Command.Unset]: [
       { key: 'alias', label: 'Alias' },
-      { key: 'success', label: 'Success' }
+      { key: 'success', label: 'Success' },
     ],
     [Command.Set]: [
       { key: 'alias', label: 'Alias' },
-      { key: 'value', label: 'Value' }
+      { key: 'value', label: 'Value' },
     ],
     [Command.List]: [
       { key: 'alias', label: 'Alias' },
-      { key: 'value', label: 'Value' }
-    ]
+      { key: 'value', label: 'Value' },
+    ],
   };
 
-  output(commandName: Command, results: AliasResult[]) {
+  public output(commandName: Command, results: AliasResult[]): void {
     if (results.length === 0) {
       this.ux.log('No results found');
       return;
@@ -58,22 +58,22 @@ export abstract class AliasCommand extends SfdxCommand {
 
     this.ux.styledHeader(chalk.blue(`Alias ${commandName}`));
 
-    const values = AliasCommand.tableColumns[commandName] as TableColumn[];
+    const values = AliasCommand.tableColumns[commandName];
 
     this.ux.table(results, { columns: values });
 
-    results.forEach(result => {
+    results.forEach((result) => {
       if (result.error) {
         throw result.error;
       }
     });
   }
 
-  parseArgs(): string[] {
+  public parseArgs(): string[] {
     const { argv } = this.parse({
       flags: this.statics.flags,
       args: this.statics.args,
-      strict: this.statics.strict
+      strict: this.statics.strict,
     });
     return argv;
   }

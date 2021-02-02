@@ -17,6 +17,7 @@ export interface AliasResult {
   error?: SfdxError;
 }
 
+// eslint-disable-next-line no-shadow
 export enum Command {
   List = 'List',
   Set = 'Set',

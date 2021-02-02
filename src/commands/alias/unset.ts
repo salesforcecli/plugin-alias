@@ -28,8 +28,9 @@ export default class Unset extends AliasCommand {
           aliases.unset(key);
           results.push({ alias: key, success: true });
         } catch (error) {
+          const err = error as SfdxError;
           process.exitCode = 1;
-          results.push({ alias: key, success: false, error });
+          results.push({ alias: key, success: false, error: err });
         }
       });
       await aliases.write();

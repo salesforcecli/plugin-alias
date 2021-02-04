@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "command": "alias:list",
+        "plugin": "@salesforce/plugin-alias",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "alias:set",
+        "plugin": "@salesforce/plugin-alias",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    },
+    {
+        "command": "alias:unset",
+        "plugin": "@salesforce/plugin-alias",
+        "flags": [
+            "json",
+            "loglevel"
+        ]
+    }
+]

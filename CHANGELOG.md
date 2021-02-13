@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.6](https://github.com/salesforcecli/plugin-alias/compare/v1.1.5...v1.1.6) (2021-02-13)
+
+
+### Bug Fixes
+
+* do not require higher node than sfdx-cli ([5086fea](https://github.com/salesforcecli/plugin-alias/commit/5086feac42014ffc2b47af449305e44327498fde))
+
 ### [1.1.5](https://github.com/salesforcecli/plugin-alias/compare/v1.1.4...v1.1.5) (2020-12-17)
 
 

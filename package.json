@@ -1,7 +1,7 @@
 {
   "name": "@salesforce/plugin-alias",
   "description": "Plugin for alias commands",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "author": "Salesforce",
   "bugs": "https://github.com/forcedotcom/cli/issues",
   "dependencies": {
@@ -49,7 +49,7 @@
     }
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12.0.0"
   },
   "files": [
     "/lib",

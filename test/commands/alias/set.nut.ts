@@ -7,16 +7,23 @@
 import { execCmd, TestSession } from '@salesforce/cli-plugins-testkit';
 import { getString, getNumber } from '@salesforce/ts-types';
 import { expect } from '@salesforce/command/lib/test';
+let testSession: TestSession;
+
+function unsetAll() {
+  execCmd('sfdx alias:unset DevHub');
+  execCmd('sfdx alias:unset Admin');
+  execCmd('sfdx alias:unset user');
+}
 
 describe('alias:set NUTs', () => {
-  let testSession: TestSession;
+  testSession = TestSession.create({});
 
-  describe('alias set success', () => {
-    before(() => {
-      testSession = TestSession.create({});
+  describe('initial alias setup', () => {
+    beforeEach(() => {
+      unsetAll();
     });
 
-    it('alias:set --json', () => {
+    it('alias:set multiple values and json', () => {
       const res = execCmd('alias:set DevHub=devhuborg@salesforce.com Admin=admin@salesforce.com --json', {
         ensureExitCode: 0,
       });
@@ -27,28 +34,28 @@ describe('alias:set NUTs', () => {
         ],
         status: 0,
       });
+    });
 
-      const list = execCmd('alias:list --json', {
+    it('alias:set multiple values stdout', () => {
+      const res: string = execCmd('alias:set DevHub=devhuborg@salesforce.com Admin=admin@salesforce.com', {
         ensureExitCode: 0,
-      });
-      expect(list.jsonOutput).to.deep.equal({
-        result: [
-          { alias: 'DevHub', value: 'devhuborg@salesforce.com' },
-          { alias: 'Admin', value: 'admin@salesforce.com' },
-        ],
-        status: 0,
-      });
+      }).shellOutput;
+      expect(res).to.include('=== Alias Set');
+      expect(res).to.include('Alias   Value');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('devhuborg@salesforce.com');
+      expect(res).to.include('Admin');
+      expect(res).to.include('admin@salesforce.com');
     });
   });
 
   describe('alias:set overwrites existing entry', () => {
-    before(() => {
-      testSession = TestSession.create({
-        setupCommands: ['sfdx alias:set DevHub=mydevhuborg@salesforce.com'],
-      });
+    beforeEach(() => {
+      unsetAll();
+      execCmd('alias:set DevHub=mydevhuborg@salesforce.com');
     });
 
-    it('alias:set overwrites existing entry correctly', () => {
+    it('alias:set overwrites existing entry correctly json', () => {
       // overwriting DevHub entry to point to newdevhub
       const res = execCmd('alias:set DevHub=newdevhub@salesforce.com Admin=admin@salesforce.com --json', {
         ensureExitCode: 0,
@@ -61,24 +68,32 @@ describe('alias:set NUTs', () => {
         ],
         status: 0,
       });
-      const list = execCmd('alias:list --json', {
+    });
+
+    it('alias:set overwrites entry correctly stdout', () => {
+      const res: string = execCmd('alias:set DevHub=newdevhub@salesforce.com Admin=admin@salesforce.com', {
         ensureExitCode: 0,
-      });
-      expect(list.jsonOutput).to.deep.equal({
-        result: [
-          { alias: 'DevHub', value: 'newdevhub@salesforce.com' },
-          { alias: 'Admin', value: 'admin@salesforce.com' },
-        ],
-        status: 0,
-      });
+      }).shellOutput;
+      expect(res).to.include('=== Alias Set');
+      expect(res).to.include('Alias   Value');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('newdevhub@salesforce.com');
+      expect(res).to.include('Admin');
+      expect(res).to.include('admin@salesforce.com');
+    });
+
+    it('alias:set DevHub= sets DevHub entry to undefined stdout', () => {
+      const res: string = execCmd('alias:set DevHub=', {
+        ensureExitCode: 0,
+      }).shellOutput;
+      expect(res).to.include('=== Alias Set');
+      expect(res).to.include('Alias   Value');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('undefined');
     });
   });
 
   describe('alias:set without varargs throws error', () => {
-    beforeEach(() => {
-      testSession = TestSession.create({});
-    });
-
     it('alias:set --json', () => {
       // access each member individually because the stack trace will be different
       const res = execCmd('alias:set  --json');
@@ -90,36 +105,17 @@ describe('alias:set NUTs', () => {
       );
       expect(getNumber(res.jsonOutput, 'exitCode')).to.equal(1);
       expect(getNumber(res.jsonOutput, 'status')).to.equal(1);
-      const list = execCmd('alias:list --json', {
-        ensureExitCode: 0,
-      });
-      expect(list.jsonOutput).to.deep.equal({
-        result: [],
-        status: 0,
-      });
     });
 
-    it('alias:set DevHub= --json', () => {
-      // access each member individually because the stack trace will be different
-      const res = execCmd('alias:set  --json');
-      expect(getNumber(res.jsonOutput, 'status')).to.equal(1);
-      expect(getString(res.jsonOutput, 'name')).to.equal('VarargsRequired');
-      expect(getString(res.jsonOutput, 'stack')).to.contain('VarargsRequired');
-      expect(getString(res.jsonOutput, 'message')).to.equal(
-        'Provide required name=value pairs for the command. Enclose any values that contain spaces in double quotes.'
+    it('alias:set without varargs stdout', () => {
+      const res: string = execCmd('alias:set ').shellOutput.stderr;
+      expect(res).to.include(
+        'ERROR running alias:set:  Provide required name=value pairs for the command. Enclose any values that contain spaces in double quotes.'
       );
-      expect(getNumber(res.jsonOutput, 'exitCode')).to.equal(1);
-      expect(getNumber(res.jsonOutput, 'status')).to.equal(1);
-      const list = execCmd('alias:list --json', {
-        ensureExitCode: 0,
-      });
-      expect(list.jsonOutput).to.deep.equal({
-        result: [],
-        status: 0,
-      });
     });
   });
-  afterEach(async () => {
-    await testSession?.clean();
-  });
+});
+
+afterEach(async () => {
+  await testSession?.clean();
 });

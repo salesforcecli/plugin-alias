@@ -7,15 +7,13 @@
 import { execCmd, TestSession } from '@salesforce/cli-plugins-testkit';
 import { expect } from '@salesforce/command/lib/test';
 
+let testSession: TestSession;
+
 describe('alias:unset NUTs', () => {
-  let testSession: TestSession;
+  testSession = TestSession.create({});
 
-  describe('alias:unset without alias file', () => {
-    before(() => {
-      testSession = TestSession.create({});
-    });
-
-    it('alias:unset --json', () => {
+  describe('alias:unset non-existent key', () => {
+    it("will unset a key even if it doesn't exist", () => {
       // weird behavior that unsetting an alias that doesn't exist shows as success
       // there's no harm in doing so, just a little unintuitive
       const res = execCmd('alias:unset noAlias --json', { ensureExitCode: 0 });
@@ -28,22 +26,24 @@ describe('alias:unset NUTs', () => {
           },
         ],
       });
-      const list = execCmd('alias:list --json', { ensureExitCode: 0 });
-      expect(list.jsonOutput).to.deep.equal({
-        status: 0,
-        result: [],
-      });
+    });
+
+    it("will unset a key even if it doesn't exist stdout", () => {
+      const res: string = execCmd('alias:unset noAlias', {
+        ensureExitCode: 0,
+      }).shellOutput;
+      expect(res).to.include('=== Alias Unset');
+      expect(res).to.include('Alias    Success');
+      expect(res).to.include('noAlias');
+      expect(res).to.include('true');
     });
   });
+
   describe('alias unset value', () => {
-    before(() => {
-      testSession = TestSession.create({
-        setupCommands: [
-          'sfdx alias:set DevHub=mydevhuborg@salesforce.com',
-          'sfdx alias:set Admin=admin@salesforce.com',
-          'sfdx alias:set user=user@salesforce.com',
-        ],
-      });
+    beforeEach(() => {
+      execCmd('alias:set DevHub=mydevhuborg@salesforce.com');
+      execCmd('alias:set Admin=admin@salesforce.com');
+      execCmd('alias:set user=user@salesforce.com');
     });
 
     it('alias:unset --json', () => {
@@ -72,17 +72,23 @@ describe('alias:unset NUTs', () => {
         ],
       });
     });
+
+    it('alias:unset DevHub', () => {
+      const res: string = execCmd('alias:unset DevHub user', {
+        ensureExitCode: 0,
+      }).shellOutput;
+      expect(res).to.include('=== Alias Unset');
+      expect(res).to.include('Alias   Success');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('true');
+    });
   });
 
   describe('alias unset multiple values', () => {
-    before(() => {
-      testSession = TestSession.create({
-        setupCommands: [
-          'sfdx alias:set DevHub=mydevhuborg@salesforce.com',
-          'sfdx alias:set Admin=admin@salesforce.com',
-          'sfdx alias:set user=user@salesforce.com',
-        ],
-      });
+    beforeEach(() => {
+      execCmd('alias:set DevHub=mydevhuborg@salesforce.com');
+      execCmd('alias:set Admin=admin@salesforce.com');
+      execCmd('alias:set user=user@salesforce.com');
     });
 
     it('alias:unset --json', () => {
@@ -111,9 +117,21 @@ describe('alias:unset NUTs', () => {
         ],
       });
     });
-  });
 
-  afterEach(async () => {
-    await testSession?.clean();
+    it('alias:unset DevHub user', () => {
+      const res: string = execCmd('alias:unset DevHub user', {
+        ensureExitCode: 0,
+      }).shellOutput;
+      expect(res).to.include('=== Alias Unset');
+      expect(res).to.include('Alias   Success');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('true');
+      expect(res).to.include('user');
+      expect(res).to.include('true');
+    });
   });
+});
+
+after(async () => {
+  await testSession?.clean();
 });

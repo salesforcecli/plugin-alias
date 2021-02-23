@@ -7,12 +7,20 @@
 import { execCmd, TestSession } from '@salesforce/cli-plugins-testkit';
 import { expect } from '@salesforce/command/lib/test';
 
+let testSession: TestSession;
+
+function unsetAll() {
+  execCmd('sfdx alias:unset DevHub');
+  execCmd('sfdx alias:unset Admin');
+  execCmd('sfdx alias:unset user');
+}
+
 describe('alias:list NUTs', () => {
-  let testSession: TestSession;
+  testSession = TestSession.create({});
 
   describe('alias:list without results', () => {
-    before(() => {
-      testSession = TestSession.create({});
+    beforeEach(() => {
+      unsetAll();
     });
 
     it('lists no aliases correctly', () => {
@@ -22,13 +30,17 @@ describe('alias:list NUTs', () => {
         status: 0,
       });
     });
+
+    it('lists no aliases stdout', () => {
+      const res: string = execCmd('alias:list').shellOutput;
+      expect(res).to.include('No results found');
+    });
   });
 
   describe('alias:list with singular result', () => {
-    before(() => {
-      testSession = TestSession.create({
-        setupCommands: ['sfdx alias:set DevHub=mydevhuborg@salesforce.com'],
-      });
+    beforeEach(() => {
+      unsetAll();
+      execCmd('alias:set DevHub=mydevhuborg@salesforce.com');
     });
 
     it('lists singular alias correctly', () => {
@@ -43,20 +55,24 @@ describe('alias:list NUTs', () => {
         status: 0,
       });
     });
+
+    it('lists singular result correctly stdout', () => {
+      const res: string = execCmd('alias:list', { ensureExitCode: 0 }).shellOutput;
+      expect(res).to.include('=== Alias List');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('mydevhuborg@salesforce.com');
+    });
   });
 
   describe('alias:list with multiple results', () => {
-    before(() => {
-      testSession = TestSession.create({
-        setupCommands: [
-          'sfdx alias:set DevHub=mydevhuborg@salesforce.com',
-          'sfdx alias:set Admin=admin@salesforce.com',
-          'sfdx alias:set user=user@salesforce.com',
-        ],
-      });
+    beforeEach(() => {
+      unsetAll();
+      execCmd('alias:set DevHub=mydevhuborg@salesforce.com');
+      execCmd('alias:set Admin=admin@salesforce.com');
+      execCmd('alias:set user=user@salesforce.com');
     });
 
-    it('lists multiple results correctly', () => {
+    it('lists multiple results correctly JSON', () => {
       const res = execCmd('alias:list --json', { ensureExitCode: 0 });
       expect(res.jsonOutput).to.deep.equal({
         result: [
@@ -76,9 +92,20 @@ describe('alias:list NUTs', () => {
         status: 0,
       });
     });
-  });
 
-  afterEach(async () => {
-    await testSession?.clean();
+    it('lists multiple results correctly stdout', () => {
+      const res: string = execCmd('alias:list', { ensureExitCode: 0 }).shellOutput;
+      expect(res).to.include('=== Alias List');
+      expect(res).to.include('DevHub');
+      expect(res).to.include('mydevhuborg@salesforce.com');
+      expect(res).to.include('Admin');
+      expect(res).to.include('admin@salesforce.com');
+      expect(res).to.include('user');
+      expect(res).to.include('user@salesforce.com');
+    });
   });
+});
+
+after(async () => {
+  await testSession?.clean();
 });

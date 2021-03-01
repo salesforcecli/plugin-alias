@@ -8,7 +8,7 @@
 import { SfdxCommand } from '@salesforce/command';
 import { SfdxError } from '@salesforce/core';
 import { Nullable } from '@salesforce/ts-types';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 
 export interface AliasResult {
   alias: string;

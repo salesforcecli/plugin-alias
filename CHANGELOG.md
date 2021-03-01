@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/salesforcecli/plugin-alias/compare/v1.1.7...v1.1.8) (2021-03-01)
+
+
+### Bug Fixes
+
+* add NUTs [skip ci] ([#36](https://github.com/salesforcecli/plugin-alias/issues/36)) ([949932c](https://github.com/salesforcecli/plugin-alias/commit/949932cc299753615cd761e83c513fbe9a0e0a02))
+
 ### [1.1.7](https://github.com/salesforcecli/plugin-alias/compare/v1.1.6...v1.1.7) (2021-02-13)
 
 

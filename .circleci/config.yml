@@ -39,8 +39,7 @@ workflows:
           sign: true
           github-release: true
           requires:
-            - node-latest
-            - node-12
+            - release-management/test-package
           filters:
             branches:
               only: main

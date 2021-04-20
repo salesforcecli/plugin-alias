@@ -15,8 +15,8 @@ function unsetAll() {
   execCmd('sfdx alias:unset user');
 }
 
-describe('alias:set NUTs', () => {
-  testSession = TestSession.create({});
+describe('alias:set NUTs', async () => {
+  testSession = await TestSession.create({});
 
   describe('initial alias setup', () => {
     beforeEach(() => {

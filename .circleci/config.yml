@@ -29,8 +29,12 @@ parameters:
     default: ''
     type: string
   repo_tag:
-    description: 'The tag of the module repo to checkout, '''' defaults to branch/PR'
+    description: The tag of the module repo to checkout, '' defaults to branch/PR
     default: ''
+    type: string
+  context_name:
+    description: Name of the context devhub name
+    default: gs0
     type: string
 workflows:
   version: 2
@@ -61,6 +65,7 @@ workflows:
           sfdx_version: latest
           requires:
             - release-management/test-package
+          context: << pipeline.parameters.context_name >>
         release-management/release-package:
           sign: true
           github-release: true
@@ -75,6 +80,14 @@ workflows:
           os: windows
           requires:
             - release-management/test-package
+        release-management/release-package:
+          sign: true
+          github-release: true
+          requires:
+            - release-management/test-package
+          filters:
+            branches:
+              only: main
       - release-management/release-package:
           sign: true
           github-release: true

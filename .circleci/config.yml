@@ -66,6 +66,7 @@ workflows:
           requires:
             - release-management/test-package
           context: << pipeline.parameters.context_name >>
+          os: linux
         release-management/release-package:
           sign: true
           github-release: true
@@ -80,6 +81,7 @@ workflows:
           os: windows
           requires:
             - release-management/test-package
+          context: << pipeline.parameters.context_name >>
         release-management/release-package:
           sign: true
           github-release: true

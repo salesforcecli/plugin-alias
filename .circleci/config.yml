@@ -44,20 +44,11 @@ parameters:
     type: string
 
 jobs:
-  checkout:
-    executor:
-      name: release-management/windows
+  setup:
+    executor: continuation/default
     steps:
       - checkout
-
-workflows:
-  version: 2
-  test-and-release:
-    when: << pipeline.parameters.run-auto-workflows >>
-    jobs:
-      - checkout
       - continuation/continue:
-          context: dev_hub_default
           configuration_path: ./.circleci/salesforcecli-config.yml
           parameters: |
             { "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
@@ -68,3 +59,10 @@ workflows:
               "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
               "context_name": "<<pipeline.parameters.context_name>> || ${DEFAULT_DEV_HUB}"
             }
+
+workflows:
+  version: 2
+  setup:
+    jobs:
+      - setup:
+          context: dev_hub_default

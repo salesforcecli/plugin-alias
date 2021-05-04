@@ -78,7 +78,7 @@ jobs:
                     "sfdx_executable_path": "<<pipeline.parameters.sfdx_executable_path>>",
                     "repo_tag": "<<pipeline.parameters.repo_tag>>",
                     "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
-                    "context_name": "$DEFAULT_DEV_HUB"
+                    "context_name": "<<${DEFAULT_DEV_HUB}>>"
                   }
 
 workflows:

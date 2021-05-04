@@ -48,6 +48,7 @@ workflows:
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:
+      - checkout
       - continuation/continue:
           context: dev_hub_default
           configuration_path: ./.circleci/salesforcecli-config.yml

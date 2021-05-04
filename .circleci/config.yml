@@ -52,34 +52,33 @@ jobs:
       - when:
           condition: <<pipeline.parameters.context_name>>
           steps:
-            - continuation/continue:
-                configuration_path: ./.circleci/salesforcecli-config.yml
-                parameters: |
-                  { "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
-                    "run-just-nuts": <<pipeline.parameters.run-just-nuts>>,
-                    "node_version": "<<pipeline.parameters.node_version>>",
-                    "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
-                    "sfdx_executable_path": "<<pipeline.parameters.sfdx_executable_path>>",
-                    "repo_tag": "<<pipeline.parameters.repo_tag>>",
-                    "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
-                    "context_name": "<<pipeline.parameters.context_name>>"
-                  }
+            - run: |
+                echo '{ "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
+                  "run-just-nuts": <<pipeline.parameters.run-just-nuts>>,
+                  "node_version": "<<pipeline.parameters.node_version>>",
+                  "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
+                  "sfdx_executable_path": "<<pipeline.parameters.sfdx_executable_path>>",
+                  "repo_tag": "<<pipeline.parameters.repo_tag>>",
+                  "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
+                  "context_name": "<<pipeline.parameters.context_name>>"
+                }' >> ./continue.json
       - when:
           condition:
             not: <<pipeline.parameters.context_name>>
           steps:
-            - continuation/continue:
-                configuration_path: ./.circleci/salesforcecli-config.yml
-                parameters: |
-                  { "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
-                    "run-just-nuts": <<pipeline.parameters.run-just-nuts>>,
-                    "node_version": "<<pipeline.parameters.node_version>>",
-                    "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
-                    "sfdx_executable_path": "<<pipeline.parameters.sfdx_executable_path>>",
-                    "repo_tag": "<<pipeline.parameters.repo_tag>>",
-                    "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
-                    "context_name": "${DEFAULT_DEV_HUB}"
-                  }
+            - run: |
+                echo '{ "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
+                  "run-just-nuts": <<pipeline.parameters.run-just-nuts>>,
+                  "node_version": "<<pipeline.parameters.node_version>>",
+                  "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
+                  "sfdx_executable_path": "<<pipeline.parameters.sfdx_executable_path>>",
+                  "repo_tag": "<<pipeline.parameters.repo_tag>>",
+                  "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
+                  "context_name": "${DEFAULT_DEV_HUB}"
+                }' >> ./continue.json
+      - continuation/continue:
+          configuration_path: ./.circleci/salesforcecli-config.yml
+          parameters: ./continue.json
 
 workflows:
   version: 2

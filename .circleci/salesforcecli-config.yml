@@ -17,6 +17,10 @@ parameters:
       determine if the just-nuts workflow will run.
     default: false
     type: boolean
+  node_version:
+    description: version of node to run tests against
+    type: string
+    default: 'latest'
   sfdx_version:
     description: |
       By default, the latest version of the standalone CLI will be installed.

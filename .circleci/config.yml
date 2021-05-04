@@ -40,7 +40,6 @@ parameters:
     type: string
   context_name:
     description: 'Name of the context devhub name'
-    default: 'gs40'
     type: string
 
 workflows:
@@ -48,66 +47,15 @@ workflows:
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:
-      - release-management/validate-pr:
-          filters:
-            branches:
-              ignore: main
-      - release-management/test-package:
-          matrix:
-            parameters:
-              os:
-                - linux
-                - windows
-              node_version:
-                - latest
-                - lts
-                - maintenance
-            exclude:
-              - os: windows
-                node_version: lts
-              - os: windows
-                node_version: maintenance
-      - release-management/release-package:
-          sign: true
-          github-release: true
-          requires:
-            - release-management/test-package
-          filters:
-            branches:
-              only: main
-          context: CLI_CTC
       - continuation/continue:
+          context: dev_hub_default
           configuration_path: ./.circleci/nuts.yml
           parameters: |
-            { "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
+            { "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
+              "run-just-nuts": <<pipeline.parameters.run-just-nuts>>,
+              "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
               "sfdx_executable_path": "sfdx",
               "repo_tag": "<<pipeline.parameters.repo_tag>>",
               "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
-              "context": "<<pipeline.parameters.context_name>>"
+              "context_name": "<<pipeline.parameters.context_name || ${DEFAULT_DEV_HUB}>>"
             }
-
-#  test-ts-update:
-#    triggers:
-#      - schedule:
-#          cron: 0 0 * * *
-#          filters:
-#            branches:
-#              only:
-#                - main
-#    jobs:
-#      - release-management/test-ts-update
-#  just-nuts:
-#    when: << pipeline.parameters.run-just-nuts >>
-#    jobs:
-#      - release-management/test-nut:
-#          name: just-nuts-<< matrix.os >>
-#          sfdx_version: << pipeline.parameters.sfdx_version >>
-#          sfdx_executable_path: sfdx
-#          repo_tag: << pipeline.parameters.repo_tag >>
-#          matrix:
-#            parameters:
-#              os:
-#                - linux
-#                - windows
-#          npm_module_name: << pipeline.parameters.npm_module_name >>
-#          context: << pipeline.parameters.context_name >>

@@ -45,6 +45,31 @@ parameters:
 
 workflows:
   version: 2
+  test-ts-update:
+    triggers:
+      - schedule:
+          cron: 0 0 * * *
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - release-management/test-ts-update
+  just-nuts:
+    when: << pipeline.parameters.run-just-nuts >>
+    jobs:
+      - release-management/test-nut:
+          name: just-nuts-<< matrix.os >>
+          sfdx_version: << pipeline.parameters.sfdx_version >>
+          sfdx_executable_path: sfdx
+          repo_tag: << pipeline.parameters.repo_tag >>
+          matrix:
+            parameters:
+              os:
+                - linux
+                - windows
+          npm_module_name: << pipeline.parameters.npm_module_name >>
+          context: << pipeline.parameters.context_name >>
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:
@@ -85,29 +110,3 @@ workflows:
               "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
               "context": "<<pipeline.parameters.context_name>>"
             }
-
-  test-ts-update:
-    triggers:
-      - schedule:
-          cron: 0 0 * * *
-          filters:
-            branches:
-              only:
-                - main
-    jobs:
-      - release-management/test-ts-update
-  just-nuts:
-    when: << pipeline.parameters.run-just-nuts >>
-    jobs:
-      - release-management/test-nut:
-          name: just-nuts-<< matrix.os >>
-          sfdx_version: << pipeline.parameters.sfdx_version >>
-          sfdx_executable_path: sfdx
-          repo_tag: << pipeline.parameters.repo_tag >>
-          matrix:
-            parameters:
-              os:
-                - linux
-                - windows
-          npm_module_name: << pipeline.parameters.npm_module_name >>
-          context: << pipeline.parameters.context_name >>

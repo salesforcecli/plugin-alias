@@ -40,6 +40,7 @@ parameters:
     type: string
   context_name:
     description: 'Name of the context devhub name'
+    default: ''
     type: string
 
 workflows:
@@ -57,5 +58,5 @@ workflows:
               "sfdx_executable_path": "sfdx",
               "repo_tag": "<<pipeline.parameters.repo_tag>>",
               "npm_module_name": "<<pipeline.parameters.npm_module_name>>",
-              "context_name": "<<pipeline.parameters.context_name || ${DEFAULT_DEV_HUB}>>"
+              "context_name": "<<pipeline.parameters.context_name>> || ${DEFAULT_DEV_HUB}"
             }

@@ -3,13 +3,10 @@ setup: true
 orbs:
   release-management: salesforce/npm-release-management@dev:5b60f65
   continuation: circleci/continuation@0.1.2
-parameters:
   run-auto-workflows:
     description: >
       Boolean that controls when an workflow would run.
-
       It is used to gate which workflows should run when github events occur.
-
       This parameter is used by automation to determine if a workflow will run
       within a pipeline.
     default: true
@@ -17,25 +14,28 @@ parameters:
   run-just-nuts:
     description: >
       Boolean that controls when the just-nuts will run.
-
       Default value is false and this parameter is used by automation to
-      determine if
-
-      the just-nuts workflow will run.
+      determine if the just-nuts workflow will run.
     default: false
     type: boolean
+  node_version:
+    description: version of node to run tests against
+    type: string
+    default: 'latest'
   sfdx_version:
-    description: |
-      By default, the latest version of the standalone CLI will be installed.
-      To install via npm, supply a version tag such as "latest" or "6".
+    description: 'By default, the latest version of the standalone CLI will be installed. To install via npm, supply a version tag such as "latest" or "6".'
     default: ''
     type: string
-  repo_tag:
-    description: The tag of the module repo to checkout, '' defaults to branch/PR
+  sfdx_executable_path:
+    description: "Path to sfdx executable to be used by NUTs, defaults to ''"
     default: ''
     type: string
   npm_module_name:
-    description: The fully qualified npm module name, i.e. @salesforce/plugins-data
+    description: "The fully qualified npm module name, i.e. @salesforce/plugins-data, defaults to ''"
+    default: ''
+    type: string
+  repo_tag:
+    description: "The tag of the module repo to checkout, '' defaults to branch/PR"
     default: ''
     type: string
   context_name:
@@ -53,6 +53,7 @@ jobs:
           parameters: |
             { "run-auto-workflows": <<pipeline.parameters.run-auto-workflows>>,
               "run-just-nuts": <<pipeline.parameters.run-just-nuts>>,
+              "node_version": "<<pipeline.parameters.node_version>>",
               "sfdx_version": "<<pipeline.parameters.sfdx_version>>",
               "sfdx_executable_path": "sfdx",
               "repo_tag": "<<pipeline.parameters.repo_tag>>",

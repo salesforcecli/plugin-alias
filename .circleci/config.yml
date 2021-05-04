@@ -43,6 +43,13 @@ parameters:
     default: ''
     type: string
 
+jobs:
+  checkout:
+    executor:
+      name: release-management/windows
+    steps:
+      - checkout
+
 workflows:
   version: 2
   test-and-release:

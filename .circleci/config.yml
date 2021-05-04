@@ -1,7 +1,7 @@
 version: 2.1
 setup: true
 orbs:
-  release-management: salesforce/npm-release-management@dev:5b60f65
+  release-management: salesforce/npm-release-management@dev:a4e75fd
   continuation: circleci/continuation@0.1.2
 parameters:
   run-auto-workflows:

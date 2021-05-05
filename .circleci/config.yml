@@ -41,7 +41,7 @@ workflows:
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:
-      - somethingnew: null
+      - somethingnew
       - release-management/validate-pr:
           filters:
             branches:

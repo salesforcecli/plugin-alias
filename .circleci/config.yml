@@ -41,6 +41,7 @@ workflows:
   test-and-release:
     when: << pipeline.parameters.run-auto-workflows >>
     jobs:
+      - somethingnew: null
       - release-management/validate-pr:
           filters:
             branches:
@@ -60,17 +61,6 @@ workflows:
                 node_version: lts
               - os: windows
                 node_version: maintenance
-      - release-management/test-nut:
-          name: nuts-on-linux
-          sfdx_version: latest
-          requires:
-            - release-management/test-package
-      - release-management/test-nut:
-          name: nuts-on-windows
-          sfdx_version: latest
-          os: windows
-          requires:
-            - release-management/test-package
       - release-management/release-package:
           sign: true
           github-release: true
@@ -79,7 +69,6 @@ workflows:
           filters:
             branches:
               only: main
-          context: CLI_CTC
   test-ts-update:
     triggers:
       - schedule:
@@ -97,10 +86,10 @@ workflows:
           name: just-nuts-<< matrix.os >>
           sfdx_version: << pipeline.parameters.sfdx_version >>
           sfdx_executable_path: sfdx
+          npm_module_name: << pipeline.parameters.npm_module_name >>
           repo_tag: << pipeline.parameters.repo_tag >>
           matrix:
             parameters:
               os:
                 - linux
                 - windows
-          npm_module_name: << pipeline.parameters.npm_module_name >>

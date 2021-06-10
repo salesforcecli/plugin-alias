@@ -641,46 +641,6 @@
     mkdirp "1.0.4"
     sfdx-faye "^1.0.9"
 
-"@salesforce/core@^2.23.1":
-  version "2.23.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.23.1.tgz#0a489cfba0ba3318ad760f38587389404e79c2f2"
-  integrity sha512-qANGCrOxk1+BXIfniMLUfZcgCZmRid0k+jLSWcQsg5gziG79nwzntZs+AxqniyhiK00X1qmtKaA7H6n7gTD3qA==
-  dependencies:
-    "@salesforce/bunyan" "^2.0.0"
-    "@salesforce/kit" "^1.5.0"
-    "@salesforce/schemas" "^1.0.1"
-    "@salesforce/ts-types" "^1.0.0"
-    "@types/graceful-fs" "^4.1.3"
-    "@types/jsforce" "1.9.23"
-    "@types/mkdirp" "1.0.0"
-    debug "^3.1.0"
-    graceful-fs "^4.2.4"
-    jsen "0.6.6"
-    jsforce "^1.10.0"
-    jsonwebtoken "8.5.0"
-    mkdirp "1.0.4"
-    sfdx-faye "^1.0.9"
-
-"@salesforce/core@^2.23.1":
-  version "2.23.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-2.23.1.tgz#0a489cfba0ba3318ad760f38587389404e79c2f2"
-  integrity sha512-qANGCrOxk1+BXIfniMLUfZcgCZmRid0k+jLSWcQsg5gziG79nwzntZs+AxqniyhiK00X1qmtKaA7H6n7gTD3qA==
-  dependencies:
-    "@salesforce/bunyan" "^2.0.0"
-    "@salesforce/kit" "^1.5.0"
-    "@salesforce/schemas" "^1.0.1"
-    "@salesforce/ts-types" "^1.0.0"
-    "@types/graceful-fs" "^4.1.3"
-    "@types/jsforce" "1.9.23"
-    "@types/mkdirp" "1.0.0"
-    debug "^3.1.0"
-    graceful-fs "^4.2.4"
-    jsen "0.6.6"
-    jsforce "^1.10.0"
-    jsonwebtoken "8.5.0"
-    mkdirp "1.0.4"
-    sfdx-faye "^1.0.9"
-
 "@salesforce/dev-config@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@salesforce/dev-config/-/dev-config-2.1.2.tgz#b4e206f860e87065d068bf8ba3994a032389ad81"
@@ -2456,15 +2416,15 @@ eslint-plugin-jsdoc@^27.0.3:
     spdx-expression-parse "^3.0.1"
 
 eslint-plugin-jsdoc@^35.0.0:
-  version "35.1.2"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-35.1.2.tgz#dbd447f61e9baa6c369eb85d6cd8c2df0e1f63c9"
-  integrity sha512-IPChTbaL9rWe6DCinKOpUdqsBV7r2dKEId1nweSKsjJqZp1VAQyzQJ5N6ogji2AWmrPU1jdjfHA5HIG2RaiRBA==
+  version "35.1.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-35.1.3.tgz#ee9f8566eeb87a0e96fc52ec55897a2cb93ceea5"
+  integrity sha512-9AVpCssb7+cfEx3GJtnhJ8yLOVsHDKGMgngcfvwFBxdcOVPFhLENReL5aX1R2gNiG3psqIWFVBpSPnPQTrMZUA==
   dependencies:
     "@es-joy/jsdoccomment" "^0.8.0-alpha.2"
     comment-parser "1.1.5"
     debug "^4.3.1"
     esquery "^1.4.0"
-    jsdoc-type-pratt-parser "^1.0.2"
+    jsdoc-type-pratt-parser "^1.0.4"
     lodash "^4.17.21"
     regextras "^0.8.0"
     semver "^7.3.5"
@@ -4065,10 +4025,10 @@ jsdoc-type-pratt-parser@1.0.0-alpha.23:
   resolved "https://registry.yarnpkg.com/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-1.0.0-alpha.23.tgz#01c232d92b99b7e7ef52235ab8c9115137426639"
   integrity sha512-COtimMd97eo5W0h6R9ISFj9ufg/9EiAzVAeQpKBJ1xJs/x8znWE155HGBDR2rwOuZsCes1gBXGmFVfvRZxGrhg==
 
-jsdoc-type-pratt-parser@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-1.0.2.tgz#956b4723eef47c28b8c7f4a890bcdf73e0b5b629"
-  integrity sha512-yJSKO94/IsCWxdH3A1hpsfq/CU2NUJwpFhoB8+4GKq4TvBWVv2yf2OdwO+5zvgON391HdAb+2pz1xqwmkl7W9w==
+jsdoc-type-pratt-parser@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-1.0.4.tgz#5750d2d32ffb001866537d3baaedea7cf84c7036"
+  integrity sha512-jzmW9gokeq9+bHPDR1nCeidMyFUikdZlbOhKzh9+/nJqB75XhpNKec1/UuxW5c4+O+Pi31Gc/dCboyfSm/pSpQ==
 
 jsdoctypeparser@^6.1.0:
   version "6.1.0"

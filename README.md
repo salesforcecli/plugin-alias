@@ -69,17 +69,16 @@ sfdx plugins
 # Commands
 
 <!-- commands -->
-* [`sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliaslist---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
-* [`sfdx alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliasset-namevalue---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
-* [`sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliasunset---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+
+- [`sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliaslist---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+- [`sfdx alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliasset-namevalue---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+- [`sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliasunset---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
 ## `sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 list username aliases for the Salesforce CLI
 
 ```
-list username aliases for the Salesforce CLI
-
 USAGE
   $ sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -93,18 +92,15 @@ ALIASES
   $ sfdx force:alias:list
 ```
 
-_See code: [src/commands/alias/list.ts](https://github.com/salesforcecli/plugin-alias/blob/v1.1.21/src/commands/alias/list.ts)_
+_See code: [src/commands/alias/list.ts](https://github.com/salesforcecli/plugin-alias/blob/v1.1.22/src/commands/alias/list.ts)_
 
 ## `sfdx alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 set username aliases for the Salesforce CLI
 
 ```
-set username aliases for the Salesforce CLI
-You can associate an alias with only one username at a time. If you’ve set an alias multiple times, the alias points to the most recent username.
-
 USAGE
-  $ sfdx alias:set name=value... [--json] [--loglevel 
+  $ sfdx alias:set name=value... [--json] [--loglevel
   trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
 OPTIONS
@@ -114,7 +110,7 @@ OPTIONS
                                                                                     this command invocation
 
 DESCRIPTION
-  You can associate an alias with only one username at a time. If you’ve set an alias multiple times, the alias points 
+  You can associate an alias with only one username at a time. If you’ve set an alias multiple times, the alias points
   to the most recent username.
 
 ALIASES
@@ -125,15 +121,13 @@ EXAMPLES
   sfdx alias:set YourAlias=username@example.com YourOtherAlias=devhub@example.com
 ```
 
-_See code: [src/commands/alias/set.ts](https://github.com/salesforcecli/plugin-alias/blob/v1.1.21/src/commands/alias/set.ts)_
+_See code: [src/commands/alias/set.ts](https://github.com/salesforcecli/plugin-alias/blob/v1.1.22/src/commands/alias/set.ts)_
 
 ## `sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
 unsets aliases for the Salesforce CLI
 
 ```
-unsets aliases for the Salesforce CLI
-
 USAGE
   $ sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
@@ -144,5 +138,6 @@ OPTIONS
                                                                                     this command invocation
 ```
 
-_See code: [src/commands/alias/unset.ts](https://github.com/salesforcecli/plugin-alias/blob/v1.1.21/src/commands/alias/unset.ts)_
+_See code: [src/commands/alias/unset.ts](https://github.com/salesforcecli/plugin-alias/blob/v1.1.22/src/commands/alias/unset.ts)_
+
 <!-- commandsstop -->

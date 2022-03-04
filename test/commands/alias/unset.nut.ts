@@ -33,7 +33,7 @@ describe('alias:unset NUTs', async () => {
         ensureExitCode: 0,
       }).shellOutput;
       expect(res).to.include('=== Alias Unset');
-      expect(res).to.include('Alias    Success');
+      expect(res).to.include('Alias   Success');
       expect(res).to.include('noAlias');
       expect(res).to.include('true');
     });
@@ -78,7 +78,7 @@ describe('alias:unset NUTs', async () => {
         ensureExitCode: 0,
       }).shellOutput;
       expect(res).to.include('=== Alias Unset');
-      expect(res).to.include('Alias   Success');
+      expect(res).to.include('Alias  Success');
       expect(res).to.include('DevHub');
       expect(res).to.include('true');
     });
@@ -123,7 +123,7 @@ describe('alias:unset NUTs', async () => {
         ensureExitCode: 0,
       }).shellOutput;
       expect(res).to.include('=== Alias Unset');
-      expect(res).to.include('Alias   Success');
+      expect(res).to.include('Alias  Success');
       expect(res).to.include('DevHub');
       expect(res).to.include('true');
       expect(res).to.include('user');

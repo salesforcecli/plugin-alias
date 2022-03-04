@@ -6,49 +6,29 @@
  */
 
 import { SfdxCommand } from '@salesforce/command';
-import { SfdxError } from '@salesforce/core';
+import { SfError } from '@salesforce/core';
 import { Nullable } from '@salesforce/ts-types';
 import * as chalk from 'chalk';
+import { CliUx } from '@oclif/core';
 
 export interface AliasResult {
   alias: string;
   value?: Nullable<string>;
   success?: boolean;
-  error?: SfdxError;
+  error?: SfError;
 }
 
-// eslint-disable-next-line no-shadow
 export enum Command {
   List = 'List',
   Set = 'Set',
   Unset = 'Unset',
 }
 
-interface TableColumns {
-  [Command.List]: TableColumn[];
-  [Command.Set]: TableColumn[];
-  [Command.Unset]: TableColumn[];
-}
-
-interface TableColumn {
-  key: string;
-  label: string;
-}
-
 export abstract class AliasCommand extends SfdxCommand {
-  protected static tableColumns: TableColumns = {
-    [Command.Unset]: [
-      { key: 'alias', label: 'Alias' },
-      { key: 'success', label: 'Success' },
-    ],
-    [Command.Set]: [
-      { key: 'alias', label: 'Alias' },
-      { key: 'value', label: 'Value' },
-    ],
-    [Command.List]: [
-      { key: 'alias', label: 'Alias' },
-      { key: 'value', label: 'Value' },
-    ],
+  protected static tableColumns: { [key: string]: CliUx.Table.table.Columns<Record<string, string>> } = {
+    [Command.Unset]: { alias: { header: 'Alias' }, success: { header: 'Success' } },
+    [Command.Set]: { alias: { header: 'Alias' }, value: { header: 'Value' } },
+    [Command.List]: { alias: { header: 'Alias' }, value: { header: 'Value' } },
   };
 
   public output(commandName: Command, results: AliasResult[]): void {
@@ -59,9 +39,9 @@ export abstract class AliasCommand extends SfdxCommand {
 
     this.ux.styledHeader(chalk.blue(`Alias ${commandName}`));
 
-    const values = AliasCommand.tableColumns[commandName];
+    const column = AliasCommand.tableColumns[commandName];
 
-    this.ux.table(results, { columns: values });
+    this.ux.table(results, column);
 
     results.forEach((result) => {
       if (result.error) {
@@ -70,8 +50,8 @@ export abstract class AliasCommand extends SfdxCommand {
     });
   }
 
-  public parseArgs(): string[] {
-    const { argv } = this.parse({
+  public async parseArgs(): Promise<string[]> {
+    const { argv } = await this.parse({
       flags: this.statics.flags,
       args: this.statics.args,
       strict: this.statics.strict,

@@ -6,11 +6,22 @@
  */
 
 import { expect, test } from '@salesforce/command/lib/test';
-import { Aliases } from '@salesforce/core';
+import { GlobalInfo } from '@salesforce/core';
 import * as sinon from 'sinon';
+
+let sandbox: sinon.SinonSandbox;
 
 describe('alias:list', () => {
   describe('no existing aliases', () => {
+    beforeEach(async () => {
+      sandbox = sinon.createSandbox();
+      sandbox.stub(GlobalInfo, 'create').resolves(GlobalInfo.prototype);
+    });
+
+    afterEach(() => {
+      sandbox.restore();
+    });
+
     test
       .stdout()
       .command(['alias:list'])
@@ -29,11 +40,16 @@ describe('alias:list', () => {
   });
 
   describe('existing aliases', () => {
-    let sandbox: sinon.SinonSandbox;
-    beforeEach(() => {
+    beforeEach(async () => {
       sandbox = sinon.createSandbox();
-      sandbox.stub(Aliases.prototype, 'getGroup').returns({
-        Coffee: 'espresso',
+      sandbox.stub(GlobalInfo, 'create').resolves({
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore don't stub entire object
+        aliases: {
+          getAll: () => {
+            return { Coffee: 'espresso' };
+          },
+        },
       });
     });
 

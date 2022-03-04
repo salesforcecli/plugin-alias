@@ -6,8 +6,7 @@
  */
 
 import * as os from 'os';
-import { Aliases, AliasGroup, Messages } from '@salesforce/core';
-import { Dictionary } from '@salesforce/ts-types';
+import { GlobalInfo, Messages } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
 Messages.importMessagesDirectory(__dirname);
@@ -21,12 +20,14 @@ export default class Set extends AliasCommand {
 
   public async run(): Promise<AliasResult[]> {
     const varargs = this.varargs || {};
-    const valuesToSet = Object.keys(varargs).map((v) => `${v}=${varargs[v] as string}`);
-    const savedValues = (await Aliases.parseAndUpdate(valuesToSet, AliasGroup.ORGS)) as Dictionary<string>;
-    const results = Object.keys(savedValues).map((alias) => ({
-      alias,
-      value: savedValues[alias],
-    }));
+    const info = await GlobalInfo.create();
+
+    const results = Object.keys(varargs).map((key) => {
+      const value = varargs[key] as string;
+      info.aliases.set(key, value ?? 'undefined');
+      return { alias: key, value };
+    });
+    await info.write();
     this.output(Command.Set, results);
     return results;
   }

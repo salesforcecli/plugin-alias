@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Aliases, Messages, SfdxError } from '@salesforce/core';
+import { GlobalInfo, Messages, SfError } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
 Messages.importMessagesDirectory(__dirname);
@@ -16,24 +16,25 @@ export default class Unset extends AliasCommand {
   public static readonly strict = false;
 
   public async run(): Promise<AliasResult[]> {
-    const argv = this.parseArgs();
+    const argv = await this.parseArgs();
 
     if (!argv || argv.length === 0) {
-      throw SfdxError.create('@salesforce/plugin-alias', 'unset', 'NoAliasKeysFound', []);
+      throw messages.createError('NoAliasKeysFound');
     } else {
       const results: AliasResult[] = [];
-      const aliases = await Aliases.create(Aliases.getDefaultOptions());
+      const info = await GlobalInfo.create();
+
       argv.forEach((key) => {
         try {
-          aliases.unset(key);
+          info.aliases.unset(key);
           results.push({ alias: key, success: true });
         } catch (error) {
-          const err = error as SfdxError;
+          const err = error as SfError;
           process.exitCode = 1;
           results.push({ alias: key, success: false, error: err });
         }
       });
-      await aliases.write();
+      await info.write();
       this.output(Command.Unset, results);
       return results;
     }

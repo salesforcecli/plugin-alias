@@ -99,8 +99,8 @@ describe('alias:set NUTs', async () => {
       // access each member individually because the stack trace will be different
       const res = execCmd('alias:set  --json');
       expect(getNumber(res.jsonOutput, 'status')).to.equal(1);
-      expect(getString(res.jsonOutput, 'name')).to.equal('VarargsRequiredError');
-      expect(getString(res.jsonOutput, 'stack')).to.contain('VarargsRequiredError');
+      expect(getString(res.jsonOutput, 'name')).to.equal('VarargsRequired');
+      expect(getString(res.jsonOutput, 'stack')).to.contain('VarargsRequired');
       expect(getString(res.jsonOutput, 'message')).to.equal(
         'Provide required name=value pairs for the command. Enclose any values that contain spaces in double quotes.'
       );

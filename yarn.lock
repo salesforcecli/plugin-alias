@@ -733,7 +733,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@salesforce/cli-plugins-testkit@^1.4.10":
+"@salesforce/cli-plugins-testkit@^1.5.20":
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@salesforce/cli-plugins-testkit/-/cli-plugins-testkit-1.5.20.tgz#0b43a31efaf54403a2faa137226bcf7a294dccc9"
   integrity sha512-RkjvjuixhRoUIKbVi4pO9XIg3a+tvompKZtshT01M/+w9bYBIDGPw+PphbyAgvQfikr3N2DEVH/Rw1lQ/gIDFQ==

@@ -14,6 +14,7 @@ describe('alias:set', () => {
   beforeEach(async () => {
     sandbox = sinon.createSandbox();
     sandbox.stub(GlobalInfo, 'create').resolves(GlobalInfo.prototype);
+    sandbox.stub(GlobalInfo.prototype, 'write').resolves();
   });
 
   afterEach(() => {

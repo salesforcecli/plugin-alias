@@ -20,7 +20,7 @@ export default class Set extends AliasCommand {
 
   public async run(): Promise<AliasResult[]> {
     const varargs = this.varargs || {};
-    const info = await GlobalInfo.create();
+    const info = await GlobalInfo.getInstance();
 
     const results = Object.keys(varargs).map((key) => {
       const value = varargs[key] as string;

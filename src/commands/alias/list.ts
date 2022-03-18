@@ -16,7 +16,7 @@ export default class List extends AliasCommand {
   public static aliases = ['force:alias:list'];
 
   public async run(): Promise<AliasResult[]> {
-    const info = await GlobalInfo.create();
+    const info = await GlobalInfo.getInstance();
     const keys = info.aliases.getAll() || {};
     const results = Object.keys(keys).map((alias) => ({
       alias,

@@ -22,7 +22,7 @@ export default class Unset extends AliasCommand {
       throw messages.createError('NoAliasKeysFound');
     } else {
       const results: AliasResult[] = [];
-      const info = await GlobalInfo.create();
+      const info = await GlobalInfo.getInstance();
 
       argv.forEach((key) => {
         try {

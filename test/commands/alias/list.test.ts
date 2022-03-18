@@ -15,7 +15,7 @@ describe('alias:list', () => {
   describe('no existing aliases', () => {
     beforeEach(async () => {
       sandbox = sinon.createSandbox();
-      sandbox.stub(GlobalInfo, 'create').resolves(GlobalInfo.prototype);
+      sandbox.stub(GlobalInfo, 'getInstance').resolves(GlobalInfo.prototype);
     });
 
     afterEach(() => {
@@ -42,10 +42,10 @@ describe('alias:list', () => {
   describe('existing aliases', () => {
     beforeEach(async () => {
       sandbox = sinon.createSandbox();
-      sandbox.stub(GlobalInfo, 'create').resolves({
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore don't stub entire object
+      sandbox.stub(GlobalInfo, 'getInstance').resolves({
         aliases: {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore we don't need to stub the entire object
           getAll: () => {
             return { Coffee: 'espresso' };
           },

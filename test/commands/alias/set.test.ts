@@ -6,8 +6,21 @@
  */
 
 import { expect, test } from '@salesforce/command/lib/test';
+import * as sinon from 'sinon';
+import { GlobalInfo } from '@salesforce/core';
 
 describe('alias:set', () => {
+  let sandbox: sinon.SinonSandbox;
+  beforeEach(async () => {
+    sandbox = sinon.createSandbox();
+    sandbox.stub(GlobalInfo, 'getInstance').resolves(GlobalInfo.prototype);
+    sandbox.stub(GlobalInfo.prototype, 'write').resolves();
+  });
+
+  afterEach(() => {
+    sandbox.restore();
+  });
+
   test
     .stdout()
     .command(['alias:set', 'Coffee=espresso', '--json'])

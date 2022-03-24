@@ -5,8 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Aliases, AliasGroup, Messages } from '@salesforce/core';
-import { Dictionary } from '@salesforce/ts-types';
+import { GlobalInfo, Messages } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
 Messages.importMessagesDirectory(__dirname);
@@ -17,11 +16,11 @@ export default class List extends AliasCommand {
   public static aliases = ['force:alias:list'];
 
   public async run(): Promise<AliasResult[]> {
-    const aliases = await Aliases.create(Aliases.getDefaultOptions());
-    const keyValues = (aliases.getGroup(AliasGroup.ORGS) as Dictionary<string>) || {};
-    const results = Object.keys(keyValues).map((alias) => ({
+    const info = await GlobalInfo.getInstance();
+    const keys = info.aliases.getAll() || {};
+    const results = Object.keys(keys).map((alias) => ({
       alias,
-      value: keyValues[alias],
+      value: keys[alias],
     }));
     this.output(Command.List, results);
     return results;

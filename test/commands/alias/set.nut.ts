@@ -5,8 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { execCmd, TestSession } from '@salesforce/cli-plugins-testkit';
-import { getString, getNumber } from '@salesforce/ts-types';
+import { getNumber, getString } from '@salesforce/ts-types';
 import { expect } from '@salesforce/command/lib/test';
+
 let testSession: TestSession;
 
 function unsetAll() {
@@ -41,7 +42,7 @@ describe('alias:set NUTs', async () => {
         ensureExitCode: 0,
       }).shellOutput;
       expect(res).to.include('=== Alias Set');
-      expect(res).to.include('Alias   Value');
+      expect(res).to.include('Alias  Value');
       expect(res).to.include('DevHub');
       expect(res).to.include('devhuborg@salesforce.com');
       expect(res).to.include('Admin');
@@ -75,7 +76,7 @@ describe('alias:set NUTs', async () => {
         ensureExitCode: 0,
       }).shellOutput;
       expect(res).to.include('=== Alias Set');
-      expect(res).to.include('Alias   Value');
+      expect(res).to.include('Alias  Value');
       expect(res).to.include('DevHub');
       expect(res).to.include('newdevhub@salesforce.com');
       expect(res).to.include('Admin');
@@ -87,7 +88,7 @@ describe('alias:set NUTs', async () => {
         ensureExitCode: 0,
       }).shellOutput;
       expect(res).to.include('=== Alias Set');
-      expect(res).to.include('Alias   Value');
+      expect(res).to.include('Alias  Value');
       expect(res).to.include('DevHub');
       expect(res).to.include('undefined');
     });

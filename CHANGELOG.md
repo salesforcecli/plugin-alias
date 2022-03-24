@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/salesforcecli/plugin-alias/compare/v1.2.1...v2.0.0) (2022-03-24)
+
 ### [1.2.1](https://github.com/salesforcecli/plugin-alias/compare/v1.2.0...v1.2.1) (2022-02-02)
 
 ## [1.2.0](https://github.com/salesforcecli/plugin-alias/compare/v1.1.22...v1.2.0) (2021-12-02)

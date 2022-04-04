@@ -778,9 +778,9 @@
     cli-ux "^4.9.3"
 
 "@salesforce/command@^5.0.0":
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.0.0.tgz#3d7519e1dba2343e7cd5cf98009385d58976fe4d"
-  integrity sha512-CUJCO7AwYAoGbSGMtdnbiQVWwwwkF+Q2IiFes4fOPSXpQL8H6wBv1qogwP+dKy3jBfgEP94GXOlJlZ66svjO1w==
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.0.4.tgz#4f9b5d764b603bcbc23dc65c06ac54512e92a32f"
+  integrity sha512-pdnvpoyW9iZBoobcmKV2vt0cRqTt1RsATf4E03L+vxX+8X39HnXoSDxAsZ8BthNj/RMuAXfftddmRAr1D99JYA==
   dependencies:
     "@oclif/core" "^1.5.2"
     "@oclif/plugin-help" "^5.1.11"

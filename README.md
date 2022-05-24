@@ -117,8 +117,8 @@ ALIASES
   $ sfdx force:alias:set
 
 EXAMPLES
-  sfdx alias:set YourAlias=username@example.com
-  sfdx alias:set YourAlias=username@example.com YourOtherAlias=devhub@example.com
+  $ sfdx alias:set YourAlias=username@example.com
+  $ sfdx alias:set YourAlias=username@example.com YourOtherAlias=devhub@example.com
 ```
 
 _See code: [src/commands/alias/set.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.0/src/commands/alias/set.ts)_

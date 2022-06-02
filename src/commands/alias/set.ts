@@ -6,7 +6,7 @@
  */
 
 import * as os from 'os';
-import { GlobalInfo, Messages } from '@salesforce/core';
+import { StateAggregator, Messages } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
 Messages.importMessagesDirectory(__dirname);
@@ -20,14 +20,14 @@ export default class Set extends AliasCommand {
 
   public async run(): Promise<AliasResult[]> {
     const varargs = this.varargs || {};
-    const info = await GlobalInfo.getInstance();
+    const stateAggregator = await StateAggregator.getInstance();
 
     const results = Object.keys(varargs).map((key) => {
       const value = varargs[key] as string;
-      info.aliases.set(key, value ?? 'undefined');
+      stateAggregator.aliases.set(key, value ?? 'undefined');
       return { alias: key, value };
     });
-    await info.write();
+    await stateAggregator.aliases.write();
     this.output(Command.Set, results);
     return results;
   }

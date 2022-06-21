@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import * as os from 'os';
 import { StateAggregator, Messages, SfError } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
@@ -13,6 +14,7 @@ const messages = Messages.loadMessages('@salesforce/plugin-alias', 'unset');
 
 export default class Unset extends AliasCommand {
   public static readonly description = messages.getMessage('description');
+  public static readonly examples = messages.getMessage('examples').split(os.EOL);
   public static readonly strict = false;
 
   public async run(): Promise<AliasResult[]> {

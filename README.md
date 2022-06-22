@@ -73,6 +73,8 @@ sfdx plugins
 - [`sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliaslist---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 - [`sfdx alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliasset-namevalue---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 - [`sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-aliasunset---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+- [`sfdx force:alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-forcealiaslist---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+- [`sfdx force:alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-forcealiasset-namevalue---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
 ## `sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -82,17 +84,19 @@ list username aliases for the Salesforce CLI
 USAGE
   $ sfdx alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
-OPTIONS
+FLAGS
   --json                                                                            format output as json
-
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
                                                                                     this command invocation
+
+DESCRIPTION
+  list username aliases for the Salesforce CLI
 
 ALIASES
   $ sfdx force:alias:list
 ```
 
-_See code: [src/commands/alias/list.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.0/src/commands/alias/list.ts)_
+_See code: [src/commands/alias/list.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.1/src/commands/alias/list.ts)_
 
 ## `sfdx alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -101,15 +105,16 @@ set username aliases for the Salesforce CLI
 ```
 USAGE
   $ sfdx alias:set name=value... [--json] [--loglevel
-  trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
-OPTIONS
+FLAGS
   --json                                                                            format output as json
-
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
                                                                                     this command invocation
 
 DESCRIPTION
+  set username aliases for the Salesforce CLI
+
   You can associate an alias with only one username at a time. If you’ve set an alias multiple times, the alias points
   to the most recent username.
 
@@ -118,10 +123,11 @@ ALIASES
 
 EXAMPLES
   $ sfdx alias:set YourAlias=username@example.com
+
   $ sfdx alias:set YourAlias=username@example.com YourOtherAlias=devhub@example.com
 ```
 
-_See code: [src/commands/alias/set.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.0/src/commands/alias/set.ts)_
+_See code: [src/commands/alias/set.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.1/src/commands/alias/set.ts)_
 
 ## `sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
 
@@ -131,13 +137,69 @@ unsets aliases for the Salesforce CLI
 USAGE
   $ sfdx alias:unset [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
 
-OPTIONS
+FLAGS
   --json                                                                            format output as json
-
   --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
                                                                                     this command invocation
+
+DESCRIPTION
+  unsets aliases for the Salesforce CLI
+
+EXAMPLES
+  $ sfdx alias:unset YourAlias
+
+  $ sfdx alias:unset YourAlias YourOtherAlias
 ```
 
-_See code: [src/commands/alias/unset.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.0/src/commands/alias/unset.ts)_
+_See code: [src/commands/alias/unset.ts](https://github.com/salesforcecli/plugin-alias/blob/v2.0.1/src/commands/alias/unset.ts)_
+
+## `sfdx force:alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+list username aliases for the Salesforce CLI
+
+```
+USAGE
+  $ sfdx force:alias:list [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  --json                                                                            format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+DESCRIPTION
+  list username aliases for the Salesforce CLI
+
+ALIASES
+  $ sfdx force:alias:list
+```
+
+## `sfdx force:alias:set name=value... [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+set username aliases for the Salesforce CLI
+
+```
+USAGE
+  $ sfdx force:alias:set name=value... [--json] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  --json                                                                            format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+DESCRIPTION
+  set username aliases for the Salesforce CLI
+
+  You can associate an alias with only one username at a time. If you’ve set an alias multiple times, the alias points
+  to the most recent username.
+
+ALIASES
+  $ sfdx force:alias:set
+
+EXAMPLES
+  $ sfdx alias:set YourAlias=username@example.com
+
+  $ sfdx alias:set YourAlias=username@example.com YourOtherAlias=devhub@example.com
+```
 
 <!-- commandsstop -->

@@ -5,7 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { GlobalInfo, Messages, SfError } from '@salesforce/core';
+import * as os from 'os';
+import { StateAggregator, Messages, SfError } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
 Messages.importMessagesDirectory(__dirname);
@@ -13,6 +14,7 @@ const messages = Messages.loadMessages('@salesforce/plugin-alias', 'unset');
 
 export default class Unset extends AliasCommand {
   public static readonly description = messages.getMessage('description');
+  public static readonly examples = messages.getMessage('examples').split(os.EOL);
   public static readonly strict = false;
 
   public async run(): Promise<AliasResult[]> {
@@ -22,11 +24,11 @@ export default class Unset extends AliasCommand {
       throw messages.createError('NoAliasKeysFound');
     } else {
       const results: AliasResult[] = [];
-      const info = await GlobalInfo.getInstance();
+      const stateAggregator = await StateAggregator.getInstance();
 
       argv.forEach((key) => {
         try {
-          info.aliases.unset(key);
+          stateAggregator.aliases.unset(key);
           results.push({ alias: key, success: true });
         } catch (error) {
           const err = error as SfError;
@@ -34,7 +36,7 @@ export default class Unset extends AliasCommand {
           results.push({ alias: key, success: false, error: err });
         }
       });
-      await info.write();
+      await stateAggregator.aliases.write();
       this.output(Command.Unset, results);
       return results;
     }

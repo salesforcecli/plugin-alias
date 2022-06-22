@@ -6,22 +6,12 @@
  */
 
 import { expect, test } from '@salesforce/command/lib/test';
-import { GlobalInfo } from '@salesforce/core';
-import * as sinon from 'sinon';
-
-let sandbox: sinon.SinonSandbox;
+import { testSetup } from '@salesforce/core/lib/testSetup';
 
 describe('alias:list', () => {
+  const $$ = testSetup();
+
   describe('no existing aliases', () => {
-    beforeEach(async () => {
-      sandbox = sinon.createSandbox();
-      sandbox.stub(GlobalInfo, 'getInstance').resolves(GlobalInfo.prototype);
-    });
-
-    afterEach(() => {
-      sandbox.restore();
-    });
-
     test
       .stdout()
       .command(['alias:list'])
@@ -41,19 +31,8 @@ describe('alias:list', () => {
 
   describe('existing aliases', () => {
     beforeEach(async () => {
-      sandbox = sinon.createSandbox();
-      sandbox.stub(GlobalInfo, 'getInstance').resolves({
-        aliases: {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore we don't need to stub the entire object
-          getAll: () => {
-            return { Coffee: 'espresso' };
-          },
-        },
-      });
+      $$.stubAliases({ Coffee: 'espresso' });
     });
-
-    afterEach(() => sandbox.restore());
 
     test
       .stdout()

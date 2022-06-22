@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { GlobalInfo, Messages } from '@salesforce/core';
+import { StateAggregator, Messages } from '@salesforce/core';
 import { AliasCommand, AliasResult, Command } from '../../alias';
 
 Messages.importMessagesDirectory(__dirname);
@@ -16,8 +16,8 @@ export default class List extends AliasCommand {
   public static aliases = ['force:alias:list'];
 
   public async run(): Promise<AliasResult[]> {
-    const info = await GlobalInfo.getInstance();
-    const keys = info.aliases.getAll() || {};
+    const stateAggregator = await StateAggregator.getInstance();
+    const keys = stateAggregator.aliases.getAll() || {};
     const results = Object.keys(keys).map((alias) => ({
       alias,
       value: keys[alias],

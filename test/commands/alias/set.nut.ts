@@ -90,7 +90,7 @@ describe('alias:set NUTs', async () => {
       expect(res).to.include('=== Alias Set');
       expect(res).to.include('Alias  Value');
       expect(res).to.include('DevHub');
-      expect(res).to.include('undefined');
+      expect(res).to.not.include('newdevhub@salesforce.com');
     });
   });
 

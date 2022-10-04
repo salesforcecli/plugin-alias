@@ -17,7 +17,7 @@ function unsetAll() {
 }
 
 describe('alias:set NUTs', async () => {
-  testSession = await TestSession.create({});
+  testSession = await TestSession.create();
 
   describe('initial alias setup', () => {
     beforeEach(() => {

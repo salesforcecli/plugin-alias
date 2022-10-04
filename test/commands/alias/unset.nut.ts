@@ -10,7 +10,7 @@ import { expect } from '@salesforce/command/lib/test';
 let testSession: TestSession;
 
 describe('alias:unset NUTs', async () => {
-  testSession = await TestSession.create({});
+  testSession = await TestSession.create();
 
   describe('alias:unset non-existent key', () => {
     it("will unset a key even if it doesn't exist", () => {

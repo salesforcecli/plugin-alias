@@ -16,7 +16,7 @@ function unsetAll() {
 }
 
 describe('alias:list NUTs', async () => {
-  testSession = await TestSession.create({});
+  testSession = await TestSession.create();
 
   describe('alias:list without results', () => {
     beforeEach(() => {

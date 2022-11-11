@@ -19,6 +19,7 @@
     "@salesforce/plugin-command-reference": "^1.4.4",
     "@salesforce/prettier-config": "^0.0.2",
     "@salesforce/ts-sinon": "^1.4.0",
+    "@swc/core": "^1.3.14",
     "@types/mkdirp": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.41.0",

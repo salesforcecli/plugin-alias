@@ -1,6 +1,6 @@
 # plugin-alias
 
-[![NPM](https://img.shields.io/npm/v/@salesforce/plugin-alias.svg?label=@salesforce/plugin-alias)](https://www.npmjs.com/package/@salesforce/plugin-alias) [![CircleCI](https://circleci.com/gh/salesforcecli/plugin-alias/tree/main.svg?style=shield)](https://circleci.com/gh/salesforcecli/plugin-alias/tree/main) [![Downloads/week](https://img.shields.io/npm/dw/@salesforce/plugin-alias.svg)](https://npmjs.org/package/@salesforce/plugin-alias) [![License](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://raw.githubusercontent.com/salesforcecli/plugin-alias/main/LICENSE.txt)
+[![NPM](https://img.shields.io/npm/v/@salesforce/plugin-alias.svg?label=@salesforce/plugin-alias)](https://www.npmjs.com/package/@salesforce/plugin-alias) [![Downloads/week](https://img.shields.io/npm/dw/@salesforce/plugin-alias.svg)](https://npmjs.org/package/@salesforce/plugin-alias) [![License](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://raw.githubusercontent.com/salesforcecli/plugin-alias/main/LICENSE.txt)
 
 Alias commands for Salesforce CLI
 

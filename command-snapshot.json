@@ -1,55 +1,20 @@
 [
-    {
-        "command": "alias:list",
-        "plugin": "@salesforce/plugin-alias",
-        "flags": [
-            "json",
-            "loglevel"
-        ],
-        "alias": [
-            "force:alias:list"
-        ]
-    },
-    {
-        "command": "alias:set",
-        "plugin": "@salesforce/plugin-alias",
-        "flags": [
-            "json",
-            "loglevel"
-        ],
-        "alias": [
-            "force:alias:set"
-        ]
-    },
-    {
-        "command": "alias:unset",
-        "plugin": "@salesforce/plugin-alias",
-        "flags": [
-            "json",
-            "loglevel"
-        ],
-        "alias": []
-    },
-    {
-        "command": "force:alias:list",
-        "plugin": "@salesforce/plugin-alias",
-        "flags": [
-            "json",
-            "loglevel"
-        ],
-        "alias": [
-            "force:alias:list"
-        ]
-    },
-    {
-        "command": "force:alias:set",
-        "plugin": "@salesforce/plugin-alias",
-        "flags": [
-            "json",
-            "loglevel"
-        ],
-        "alias": [
-            "force:alias:set"
-        ]
-    }
+  {
+    "command": "alias:list",
+    "plugin": "@salesforce/plugin-alias",
+    "flags": ["json", "loglevel"],
+    "alias": ["force:alias:list"]
+  },
+  {
+    "command": "alias:set",
+    "plugin": "@salesforce/plugin-alias",
+    "flags": ["json", "loglevel"],
+    "alias": ["force:alias:set"]
+  },
+  {
+    "command": "alias:unset",
+    "plugin": "@salesforce/plugin-alias",
+    "flags": ["json", "loglevel"],
+    "alias": []
+  }
 ]

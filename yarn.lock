@@ -1031,29 +1031,29 @@
     strip-ansi "6.0.1"
     ts-retry-promise "^0.7.0"
 
-"@salesforce/command@^5.2.15", "@salesforce/command@^5.2.27":
-  version "5.2.27"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.27.tgz#6440102fb5213a456a3722b8f8ad6bc4ce890efa"
-  integrity sha512-Mjp+8YfKRcQEf2DpBa1AXuyNkW9eUwiwd37eNdxR/tyksc71EiJ1Ex3hWcN4rHHLecjoAIyjhm4juCn/vXw+Bg==
+"@salesforce/command@^5.2.15", "@salesforce/command@^5.2.28":
+  version "5.2.28"
+  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.2.28.tgz#90ddfdbace98b3b2732ebf1ef90fcb57e095b72d"
+  integrity sha512-mx4Gzg/6w5jjmAhKsgfMiKTESfY0wHtnmnAJlnNNPLfypG4jO6VO9s3C8OrouhsnQ6VBHGTwXVeF9Pu3mIlKYg==
   dependencies:
     "@oclif/core" "^1.20.4"
     "@oclif/test" "^2.2.12"
-    "@salesforce/core" "^3.32.1"
+    "@salesforce/core" "^3.32.6"
     "@salesforce/kit" "^1.8.0"
     "@salesforce/ts-types" "^1.7.1"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.31.10", "@salesforce/core@^3.32.1", "@salesforce/core@^3.32.3":
-  version "3.32.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.32.3.tgz#111e298836c9172f9b8bdaad33a1939cffdae768"
-  integrity sha512-rsjAXP+j659PIngUvJgaeZ6x7j/VObA981mOyfyCU4l7FJGXIvZAgJPARI97JNUNCovy3fxLSb/uvJAqPREgrw==
+"@salesforce/core@^3.31.10", "@salesforce/core@^3.32.1", "@salesforce/core@^3.32.3", "@salesforce/core@^3.32.6":
+  version "3.32.6"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.32.6.tgz#ee42663ffbf9db2478247fa7e6af3df652eebb5f"
+  integrity sha512-+j9nXnVnK4H+YmRfhcmSW/RZu2XIM6zKlXImsy+XhWBV1zOvM1JZiQngj3pdrGck7hoMc68YfWP0UEVzmM/k+g==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.8.0"
     "@salesforce/schemas" "^1.4.0"
     "@salesforce/ts-types" "^1.5.21"
     "@types/graceful-fs" "^4.1.5"
-    "@types/semver" "^7.3.9"
+    "@types/semver" "^7.3.13"
     ajv "^8.11.0"
     archiver "^5.3.0"
     change-case "^4.1.2"
@@ -1414,10 +1414,15 @@
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/semver@^7.3.12", "@types/semver@^7.3.9":
+"@types/semver@^7.3.12":
   version "7.3.12"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.12.tgz#920447fdd78d76b19de0438b7f60df3c4a80bf1c"
   integrity sha512-WwA1MW0++RfXmCr12xeYOOC5baSC9mSb0ZqCquFzKhcoF4TvHu5MKOuXsncgZcpVFhB1pXd5hZmM0ryAoCp12A==
+
+"@types/semver@^7.3.13":
+  version "7.3.13"
+  resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.3.13.tgz#da4bfd73f49bd541d28920ab0e2bf0ee80f71c91"
+  integrity sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==
 
 "@types/shelljs@^0.8.11":
   version "0.8.11"

@@ -1,3 +1,12 @@
+## [2.1.18](https://github.com/salesforcecli/plugin-alias/compare/2.1.17...2.1.18) (2023-01-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @oclif/core from 1.23.2 to 1.24.0 ([a8b6d12](https://github.com/salesforcecli/plugin-alias/commit/a8b6d12abf0882bcf0d6f1393813e649964f8ed4))
+
+
+
 ## [2.1.17](https://github.com/salesforcecli/plugin-alias/compare/2.1.16...2.1.17) (2023-01-15)
 
 

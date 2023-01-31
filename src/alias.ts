@@ -9,7 +9,7 @@ import { SfdxCommand } from '@salesforce/command';
 import { SfError } from '@salesforce/core';
 import { Nullable } from '@salesforce/ts-types';
 import * as chalk from 'chalk';
-import { CliUx } from '@oclif/core';
+import { ux } from '@oclif/core';
 
 export interface AliasResult {
   alias: string;
@@ -25,7 +25,7 @@ export enum Command {
 }
 
 export abstract class AliasCommand extends SfdxCommand {
-  protected static tableColumns: { [key: string]: CliUx.Table.table.Columns<Record<string, string>> } = {
+  protected static tableColumns: { [key: string]: ux.Table.table.Columns<Record<string, string>> } = {
     [Command.Unset]: { alias: { header: 'Alias' }, success: { header: 'Success' } },
     [Command.Set]: { alias: { header: 'Alias' }, value: { header: 'Value' } },
     [Command.List]: { alias: { header: 'Alias' }, value: { header: 'Value' } },

@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/salesforcecli/plugin-alias/compare/2.1.21...2.2.0) (2023-01-31)
+
+
+### Features
+
+* use latest oclif/core ([#448](https://github.com/salesforcecli/plugin-alias/issues/448)) ([646a169](https://github.com/salesforcecli/plugin-alias/commit/646a169ebe72c0078865c263c663f336bebffdfd))
+
+
+
 ## [2.1.21](https://github.com/salesforcecli/plugin-alias/compare/2.1.20...2.1.21) (2023-01-29)
 
 

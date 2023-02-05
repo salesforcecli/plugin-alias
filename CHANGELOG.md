@@ -1,3 +1,12 @@
+## [2.2.1](https://github.com/salesforcecli/plugin-alias/compare/2.2.0...2.2.1) (2023-02-05)
+
+
+### Bug Fixes
+
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([75578f6](https://github.com/salesforcecli/plugin-alias/commit/75578f6cc41a2ad0c69666be93b2dc09a05d4cc9))
+
+
+
 # [2.2.0](https://github.com/salesforcecli/plugin-alias/compare/2.1.21...2.2.0) (2023-01-31)
 
 

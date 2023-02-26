@@ -927,19 +927,19 @@
     strip-ansi "6.0.1"
     ts-retry-promise "^0.7.0"
 
-"@salesforce/command@^5.2.39", "@salesforce/command@^5.3.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.3.0.tgz#17c9a25161c093a434fe82a5a90ad1e8615b709e"
-  integrity sha512-mMqqjsvcNhEosiN7I+8GEiz73ohq8WfnJSaaGvCQKr4geWP+GY9WAWXiSro8kE0r0qz3j3nAFNoXGWCUhGVZPA==
+"@salesforce/command@^5.3.0", "@salesforce/command@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/command/-/command-5.3.2.tgz#b91c3e81effe5720a7aa80fa62c01ebcc68ff12f"
+  integrity sha512-avg3al0avAMZr9EJCP/MVZjPEViXn72pVJCFPPuxlfUaYBBpk52vXlxO7HSNErQK+moCKyEPCPMxbs6vJK2UbQ==
   dependencies:
     "@oclif/core" "^1.25.0"
     "@oclif/test" "^2.2.21"
-    "@salesforce/core" "^3.33.1"
-    "@salesforce/kit" "^1.8.2"
+    "@salesforce/core" "^3.33.4"
+    "@salesforce/kit" "^1.8.5"
     "@salesforce/ts-types" "^1.7.1"
     chalk "^2.4.2"
 
-"@salesforce/core@^3.33.0", "@salesforce/core@^3.33.1", "@salesforce/core@^3.33.4":
+"@salesforce/core@^3.33.1", "@salesforce/core@^3.33.4":
   version "3.33.4"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.33.4.tgz#6bc5793b509f45020b550748084db498b45a445f"
   integrity sha512-wd+21QAvfCyYO5ZsSxoIAT2sEUsbypZ2i84nHy1176vWJrRFzJwfdS4MV2yXhkKDE3IlcVTgN+L3RPjLRB/sig==
@@ -1007,7 +1007,7 @@
     typescript "^4.1.3"
     wireit "^0.9.5"
 
-"@salesforce/kit@^1.8.0", "@salesforce/kit@^1.8.2", "@salesforce/kit@^1.9.0":
+"@salesforce/kit@^1.8.0", "@salesforce/kit@^1.8.5", "@salesforce/kit@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-1.9.0.tgz#ddc179ff588b68f3e8f5c237ab74ed4b9c8d5274"
   integrity sha512-a1DnVf2ZN/fZ4Zq0T6pxrDpwOyWSKt6Es1erpUJLvM13H+Y3C4uxSUy4aS4WSHIJA8zvWvvEiWYOV17TD0Dmug==
@@ -1016,13 +1016,13 @@
     shx "^0.3.3"
     tslib "^2.5.0"
 
-"@salesforce/plugin-command-reference@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@salesforce/plugin-command-reference/-/plugin-command-reference-1.6.2.tgz#5d17249ee67ecd0d9c285800986b54b63069ee17"
-  integrity sha512-On4/SSqIwINzbQUBwX1xb+jge201fd1ZV3taYrQB39hS5cGpNILLhDLnPlL9PQGzHRtdqFLHHn1YGbgaxv+ynA==
+"@salesforce/plugin-command-reference@^1.6.4":
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/plugin-command-reference/-/plugin-command-reference-1.6.4.tgz#d9efed4e9d892650bc71a68308c8aeaa9a7c2d27"
+  integrity sha512-L2JpbQUsiM1eLYOyaTlkjB1vWQvsbxhwT1wY2WnphIPTUrVg8rtyUpmC5SpjFHCnrvH0NYMSikUFUk8q7QJ7Dg==
   dependencies:
-    "@salesforce/command" "^5.2.39"
-    "@salesforce/core" "^3.33.0"
+    "@salesforce/command" "^5.3.2"
+    "@salesforce/core" "^3.33.1"
     "@types/lodash.uniqby" "^4.7.7"
     chalk "^3.0.0"
     handlebars "4.7.7"

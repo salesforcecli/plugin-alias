@@ -1,4 +1,8 @@
-# plugin-alias
+# DEPRECATED
+
+## see [plugin-settings](https://github.com/salesforcecli/plugin-settings)
+
+# ~~plugin-alias~~
 
 [![NPM](https://img.shields.io/npm/v/@salesforce/plugin-alias.svg?label=@salesforce/plugin-alias)](https://www.npmjs.com/package/@salesforce/plugin-alias) [![Downloads/week](https://img.shields.io/npm/dw/@salesforce/plugin-alias.svg)](https://npmjs.org/package/@salesforce/plugin-alias) [![License](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://raw.githubusercontent.com/salesforcecli/plugin-alias/main/LICENSE.txt)
 
